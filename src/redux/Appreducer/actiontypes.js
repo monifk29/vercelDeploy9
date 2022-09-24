@@ -1,0 +1,5 @@
+export const GET_HOTELS_REQ = "GET_HOTELS_REQ";
+export const GET_HOTELS_SUCCESS = "GET_HOTELS_SUCCESS";
+export const GET_HOTELS_FAIL = "GET_HOTELS_FAIL";
+
+
