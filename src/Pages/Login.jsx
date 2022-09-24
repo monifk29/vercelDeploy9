@@ -46,7 +46,7 @@ let payload = {
 }
 
 dispatch(login(payload));
-console.log(authLogin)
+console.log(authLogin.token.isAuth)
 if(authLogin.isAuth){
     Nav("/")
 }

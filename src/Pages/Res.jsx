@@ -6,10 +6,16 @@ import { useState } from "react";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import Card from "../componenets/Card";
 import { Select } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom";
 
 const Res = () => {
   const resRedux = useSelector((state) => state.AppReducer);
   const authLogin = useSelector((state) => state.AuthReducer);
+
+  console.log(authLogin.isAuth);
+
+  const Nav = useNavigate()
+
 
   const data = resRedux.res.data;
 
@@ -65,14 +71,26 @@ const Res = () => {
   
 
   useEffect(() => {
-    dispatch(getData(page));
+    if(authLogin.isAuth){
+      dispatch(getData(page));
+    }
+
+    else{
+          Nav("/login")
+    }
+   
   }, [page]);
 
   console.log(data);
 
   return (
     <>
+
+<div>{authLogin.token.token}</div>
+
       <Box>
+
+
 <div style={{display:"flex"}}>
     
     <Select onChange={(e) => setPriceVl(e.target.value)} onClick={handlePrice} w="15%" marginLeft="20px" placeholder='Sort By Price'>
